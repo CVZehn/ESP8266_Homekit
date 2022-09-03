@@ -1,0 +1,12 @@
+{
+  "additionalFiles": "..,..,..,..,..",
+  "builtInLibrariesFolders": "D:\\develop\\arduino-1.8.18\\libraries",
+  "builtInToolsFolders": "D:\\develop\\arduino-1.8.18\\tools-builder,D:\\develop\\arduino-1.8.18\\hardware\\tools\\avr,C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "build.path=d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build,build.warn_data_percentage=75,runtime.tools.python3.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\python3\\3.7.2-post1,runtime.tools.python3-3.7.2-post1.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\python3\\3.7.2-post1,runtime.tools.mklittlefs.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\mklittlefs\\3.0.4-gcc10.3-1757bed,runtime.tools.mklittlefs-3.0.4-gcc10.3-1757bed.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\mklittlefs\\3.0.4-gcc10.3-1757bed,runtime.tools.xtensa-lx106-elf-gcc.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\xtensa-lx106-elf-gcc\\3.0.4-gcc10.3-1757bed,runtime.tools.xtensa-lx106-elf-gcc-3.0.4-gcc10.3-1757bed.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\xtensa-lx106-elf-gcc\\3.0.4-gcc10.3-1757bed,runtime.tools.mkspiffs.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\mkspiffs\\3.0.4-gcc10.3-1757bed,runtime.tools.mkspiffs-3.0.4-gcc10.3-1757bed.path=C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\mkspiffs\\3.0.4-gcc10.3-1757bed",
+  "fqbn": "esp8266:esp8266:espmxdevkit:xtal=80,vt=flash,exception=disabled,stacksmash=disabled,ssl=all,mmu=3232,non32xfer=fast,eesz=1M64,ip=lm2f,dbg=Disabled,lvl=None____,wipe=none,baud=115200",
+  "hardwareFolders": "D:\\develop\\arduino-1.8.18\\hardware,C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\24186\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10818",
+  "sketchLocation": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+}

@@ -1,0 +1,1042 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\cores\\esp8266"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\variants\\esp8285"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "ESP8266WiFi.h",
+    "Includepath": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "ESP8266mDNS.h",
+    "Includepath": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "IRremoteESP8266.h",
+    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "DHT.h",
+    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\DHT_sensor_library"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "Adafruit_Sensor.h",
+    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\Adafruit_Unified_Sensor"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "ESP8266WebServer.h",
+    "Includepath": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WebServer\\src"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "homeintegration.h",
+    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap"
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\HTTPSimpleClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\BearSSLHelpers.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\CertStoreBearSSL.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiAP.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiGeneric.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiGratuitous.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiMulti.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiSTA-WPS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiSTA.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiScan.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiClientSecureBearSSL.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiServer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiServerSecureBearSSL.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiUdp.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\enable_wifi_at_boot_time.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\ESP8266mDNS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Control.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Helpers.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Structs.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Transfer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\IRac.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\IRrecv.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\IRsend.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\IRtext.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\IRtimer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\IRutils.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Airton.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Airwell.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Aiwa.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Amcor.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Argo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Arris.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Bose.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Carrier.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Coolix.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Corona.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Daikin.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Delonghi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Denon.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Dish.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Doshisha.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Ecoclim.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Electra.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_EliteScreens.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Epson.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Fujitsu.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_GICable.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_GlobalCache.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Goodweather.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Gree.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Haier.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Hitachi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Inax.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_JVC.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Kelon.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Kelvinator.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_LG.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Lasertag.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Lego.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Lutron.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_MWM.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Magiquest.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Metz.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Midea.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_MilesTag2.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Mirage.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Mitsubishi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_MitsubishiHeavy.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Multibrackets.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_NEC.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Neoclima.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Nikai.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Panasonic.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Pioneer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Pronto.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_RC5_RC6.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_RCMM.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Rhoss.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Samsung.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Sanyo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Sharp.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Sherwood.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Sony.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Symphony.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Tcl.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Technibel.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Teco.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Teknopoint.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Toshiba.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Transcold.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Trotec.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Truma.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Vestel.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Voltas.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Whirlpool.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Whynter.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Xmp.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266\\src\\ir_Zepeal.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\DHT_sensor_library\\DHT.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\DHT_sensor_library\\DHT_U.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\Adafruit_Unified_Sensor\\Adafruit_Sensor.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WebServer\\src\\detail\\mimetable.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\aa.c",
+    "Include": "wolfssl.h",
+    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL"
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\aa.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\accessories.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\arduino_homekit_server.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\bench.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\cJSON_Utils.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\cJSON_memory.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\cQueue.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\crypto.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\elgato.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\esphap_base64.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\esphap_cJSON.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\esphap_debug.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\homeintegration.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\homekitintegrationcpp.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\http_parser.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\json.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\mdnsA8266.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\mdnsresponder.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\pairing.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\port.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\query_params.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\server.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\serverA8266.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\storage.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\tlv.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\watchdog.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\xrtos.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\aes.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\arc4.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\asm.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\asn.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\async.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\blake2b.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\camellia.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\chacha.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\chacha20_poly1305.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\cmac.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\coding.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\compress.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\cpuid.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\crl.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\curve25519.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\des3.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\dh.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\dsa.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ecc.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ecc_fp.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ed25519.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\error.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\fe_low_mem.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\fe_operations.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ge_low_mem.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ge_operations.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\hash.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\hc128.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\hmac.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\idea.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\integer.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\internal.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\keys.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\logging.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\md2.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\md4.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\md5.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\memory.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\misc.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ocsp.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\pkcs12.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\pkcs7.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\poly1305.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\pwdbased.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\rabbit.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\random.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ripemd.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\rsa.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\sha.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\sha256.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\sha3.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\sha512.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\signature.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\sniffer.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\sp.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\srp.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\ssl.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\tfm.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\tls.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\tls13.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\wc_encrypt.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\wc_port.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\wolfevent.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\wolfio.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\wolfSSL\\wolfmath.c",
+    "Include": "",
+    "Includepath": null
+  }
+]

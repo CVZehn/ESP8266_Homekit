@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "cmath": "cpp"
+    },
+
+    "C_Cpp.default.browse.path": [
+           "C:\\Users\\24186\\Documents\\Arduino\\libraries\\IRremoteESP8266",
+           "C:\\Users\\24186\\Documents\\Arduino\\libraries\\DHT_sensor_library"
+        ]
+}
