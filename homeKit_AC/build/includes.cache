@@ -31,11 +31,6 @@
   },
   {
     "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
-    "Include": "Adafruit_Sensor.h",
-    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\Adafruit_Unified_Sensor"
-  },
-  {
-    "Sourcefile": "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\build\\sketch\\EspHap_ThermostatControl.ino.cpp",
     "Include": "ESP8266WebServer.h",
     "Includepath": "C:\\Users\\24186\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WebServer\\src"
   },
@@ -561,11 +556,11 @@
   },
   {
     "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\DHT_sensor_library\\DHT_U.cpp",
-    "Include": "",
-    "Includepath": null
+    "Include": "Adafruit_Sensor.h",
+    "Includepath": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\Adafruit_Unified_Sensor"
   },
   {
-    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\Adafruit_Unified_Sensor\\Adafruit_Sensor.cpp",
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\DHT_sensor_library\\DHT_U.cpp",
     "Include": "",
     "Includepath": null
   },
@@ -711,6 +706,11 @@
   },
   {
     "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\ESPHap\\xrtos.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\24186\\Documents\\Arduino\\libraries\\Adafruit_Unified_Sensor\\Adafruit_Sensor.cpp",
     "Include": "",
     "Includepath": null
   },

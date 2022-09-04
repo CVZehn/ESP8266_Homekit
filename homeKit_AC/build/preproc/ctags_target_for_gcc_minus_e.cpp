@@ -28,7 +28,7 @@ const char* password = "YYDS1024512";
 # 28 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
 
 
-const uint16_t kIrLed = 5;
+const uint16_t kIrLed = 4;
 IRsend irsend(kIrLed);
 # 40 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
 uint8_t AC_CRT_VAL = 0xFF;
@@ -69,18 +69,19 @@ decode_results results; // Somewhere to store the results
 
 
 
-# 79 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
+
 # 80 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
 
 
 
-  DHT_Unified dht(2 /* Digital pin connected to the DHT sensor */, DHT11);
+  DHT DHT(5 /* Digital pin connected to the DHT sensor */, DHT11);
+
 
 
 //Webserver
 
 
-# 90 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
+# 91 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
  ESP8266WebServer server(80);
 
 
@@ -89,11 +90,18 @@ decode_results results; // Somewhere to store the results
 
 
 
-# 99 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
+# 100 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
 bool isWebserver_started=false;
 
 
 
+
+//float min_value_t = 0, min_step_t=1, max_value_t = 6;
+float *min_step_t = 
+# 106 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
+                   __null
+# 106 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+                       ;
 
 const int identity_led=2;
 
@@ -103,34 +111,49 @@ const int identity_led=2;
 
 ///HTTPSimpleClient http;
 extern "C"{
-# 113 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
+# 117 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
 }
 
-# 116 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
+# 120 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 2
 
 
 
 String pair_file_name="/pair.dat";
 
 homekit_service_t* thermostat=
-# 121 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
+# 125 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
                              __null
-# 121 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+# 125 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
                                  ;
 homekit_service_t* fan=
-# 122 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
+# 126 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
                       __null
-# 122 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+# 126 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
                           ;
-
+homekit_service_t* temperature=
+# 127 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
+                              __null
+# 127 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+                                  ;
+homekit_service_t* humidity=
+# 128 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
+                           __null
+# 128 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+                               ;
+homekit_service_t* DHT_SENSOR=
+# 129 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3 4
+                             __null
+# 129 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+                                 ;
 
 
 
 
 
 struct device_data_t{
-  float temp=20.0;
-  float hum=50.0;
+  float ac_temp=26.0;
+  float sensor_temp=26.0;
+  float sensor_hum=50.0;
   float pressure=1000.0;
   unsigned long next_read_sensor_ms=0;
   unsigned long next_send_thingspeak_ms=0;
@@ -248,25 +271,26 @@ void setup() {
   Serial.begin(115200);
     delay(10);
 
-
     pinMode(14, 0x02);
+
+    pinMode(12, 0x02);
     irsend.begin();
     delay(200);
 
     // Perform a low level sanity checks that the compiler performs bit field
     // packing as we expect and Endianness is as we expect.
     
-# 256 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
+# 264 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
    ((
-# 256 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+# 264 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
    irutils::lowLevelSanityCheck() == 0
-# 256 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-   ) ? (void)0 : __assert_func ((__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "256" "." "168" "\", \"aSM\", @progbits, 1 #"))) = ("EspHap_ThermostatControl.ino"); &__pstr__[0];})), 256, __PRETTY_FUNCTION__, (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "256" "." "169" "\", \"aSM\", @progbits, 1 #"))) = (
-# 256 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+# 264 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
+   ) ? (void)0 : __assert_func ((__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "264" "." "168" "\", \"aSM\", @progbits, 1 #"))) = ("EspHap_ThermostatControl.ino"); &__pstr__[0];})), 264, __PRETTY_FUNCTION__, (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "264" "." "169" "\", \"aSM\", @progbits, 1 #"))) = (
+# 264 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
    "irutils::lowLevelSanityCheck() == 0"
-# 256 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
+# 264 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
    ); &__pstr__[0];}))))
-# 256 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+# 264 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
                                               ;
 
     Serial.printf("\n" "IRrecvDump is now running and waiting for IR input on Pin %d" "\n", kRecvPin);
@@ -306,7 +330,10 @@ void setup() {
    // Serial.println("WiFi connected");
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
-# 307 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+
+
+  DHT.begin();
+# 316 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
 /// now will setup homekit device
 
     //this is for custom storaage usage
@@ -327,101 +354,45 @@ void setup() {
     hap_initbase_accessory_service("ES","Yurik72","0","EspHapLed","1.0");
 
 
-    // for base accessory registering temperature
     thermostat = hap_add_thermostat_service("Thermostat",hap_update,0);
+
+    // for base accessory registering temperature
+    //temperature = hap_add_temperature_service("Temperature");
+
+    // Adding second accessory for humidity
+    temperature = hap_add_temp_as_accessory(homekit_accessory_category_sensor, "Temperature");
+    humidity = hap_add_hum_as_accessory(homekit_accessory_category_sensor, "Humidity");
 
     fan = hap_add_fan_service("Fan",hap_update,0);
 
+    //String strIp=String(WiFi.localIP()[0]) + String(".") + String(WiFi.localIP()[1]) + String(".") +  String(WiFi.localIP()[2]) + String(".") +  String(WiFi.localIP()[3]); 
+
+     homekit_characteristic_t * ch_targetstate= homekit_service_characteristic_by_type(thermostat, ("33"));
+
+     homekit_characteristic_t* ch_target_temperature=homekit_service_characteristic_by_type(thermostat, ("35"));
 
 
-hap_init_homekit_server();
-String strIp=String(WiFi.localIP()[0]) + String(".") + String(WiFi.localIP()[1]) + String(".") + String(WiFi.localIP()[2]) + String(".") + String(WiFi.localIP()[3]);
+      ch_targetstate->value.int_value = 2;
+      homekit_characteristic_notify(ch_targetstate, ch_targetstate->value);
+
+      ch_target_temperature->value.float_value = 26.0;
+      homekit_characteristic_notify(ch_target_temperature, ch_target_temperature->value);
+# 370 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+  hap_init_homekit_server();
  //setup web server
 
    if(hap_homekit_is_paired()){
 
      delay(500);
       Serial.println("Setting web server");
-      server.on("/list", HTTP_GET, handleFileList); server.on("/edit", HTTP_GET, []() { if (!handleFileRead("/edit.htm")) server.send(404, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)), "FileNotFound"); }); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "170" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/edit"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , HTTP_PUT, handleFileCreate); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "171" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/restartesp"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , HTTP_GET, [](){ESP.restart();}); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "172" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/edit"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , HTTP_DELETE, handleFileDelete); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "173" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/edit"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , HTTP_POST, []() { server.sendHeader(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "174" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "Access-Control-Allow-Origin"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , "*"); server.send(200, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)), ""); }, handleFileUpload); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "175" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/jsonsave"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , handleJsonSave); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "176" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/jsonload"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , handleJsonLoad); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "177" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/upload"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , HTTP_POST, []() { server.send(200, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)), ""); }, handleFileUpload); server.on(
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "EspHap_ThermostatControl.ino" "." "342" "." "178" "\", \"aSM\", @progbits, 1 #"))) = (
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     "/browse"
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino" 3
-     ); &__pstr__[0];}))
-# 342 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-     , handleFileBrowser); server.onNotFound([]() { if (!handleFileRead(server.uri())) handleNotFound(); }); setupOta(); saveIndex();
-      server.on("/get", handleGetVal);
-      server.on("/set", handleSetVal);
-     server.begin();
-     Serial.println(String("Web site http://")+strIp);
-     Serial.println(String("File system http://")+strIp+String("/browse"));
-      Serial.println(String("Update http://")+strIp+String("/update"));
-     isWebserver_started=true;
+      //SETUP_FILEHANDLES
+      //server.on("/get", handleGetVal);
+      //server.on("/set", handleSetVal);   
+     //server.begin(); 
+     //Serial.println(String("Web site http://")+strIp);  
+     //Serial.println(String("File system http://")+strIp+String("/browse")); 
+     //Serial.println(String("Update http://")+strIp+String("/update"));     
+     //isWebserver_started=true;
 
   }else{
       Serial.println("Web server is NOT SET, waiting for pairing");
@@ -429,10 +400,14 @@ String strIp=String(WiFi.localIP()[0]) + String(".") + String(WiFi.localIP()[1])
 
 }
 void handleGetVal(){
+
+  Serial.println("handleGetVal\n");
   if(server.arg("var") == "temp")
-    server.send(200, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)),String(DeviceData.temp));
+    server.send(200, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)),String(DeviceData.sensor_temp));
   else if(server.arg("var") == "hum")
-     server.send(200, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)),String(DeviceData.hum));
+  {
+     server.send(200, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)),String(DeviceData.sensor_hum));
+  }
   else
     server.send(505, (reinterpret_cast<const __FlashStringHelper *>(TEXT_PLAIN)),"Bad args");
 
@@ -446,8 +421,6 @@ void handleSetVal(){
   if(server.arg("var") == "ch1"){
   }
 
-
-
 }
 void loop() {
  if(DeviceData.next_read_sensor_ms<=millis()){
@@ -455,8 +428,8 @@ void loop() {
     notify_hap();
     DeviceData.next_read_sensor_ms=millis()+5000;
  }
-# 393 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-  if(digitalRead(14) == 0)
+# 430 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+  if(digitalRead(12) == 0)
   {
     IRRevcCheck();
   }
@@ -480,8 +453,13 @@ void loop() {
 }
 
 void init_hap_storage(){
-  Serial.print("init_hap_storage");
+  Serial.print("init_hap_storage \n");
 
+ if( digitalRead(14) == 0)//不写入配对码  就重新开始配对
+ {
+   Serial.println("reset to  pairring");
+   return;
+ }
 
   File fsDAT=SPIFFS.open(pair_file_name, "r");
  if(!fsDAT){
@@ -499,10 +477,8 @@ void init_hap_storage(){
   delete []buf;
 
 }
-void storage_changed(char * szstorage,int bufsize){
-
-
-
+void storage_changed(char * szstorage,int bufsize) //回调函数 ，会传配对码给homekit 服务
+{
   SPIFFS.remove(pair_file_name);
   File fsDAT=SPIFFS.open(pair_file_name, "w+");
   if(!fsDAT){
@@ -517,12 +493,26 @@ void storage_changed(char * szstorage,int bufsize){
 void notify_hap(){
 
  if(thermostat){
-  homekit_characteristic_t * ch_temp= homekit_service_characteristic_by_type(thermostat, ("11"));
-  if(ch_temp && !isnan(DeviceData.temp) && ch_temp->value.float_value!=DeviceData.temp ){
-    ch_temp->value.float_value=DeviceData.temp;
+  homekit_characteristic_t * ch_temp1= homekit_service_characteristic_by_type(thermostat, ("11"));
+  if(ch_temp1 && !isnan(DeviceData.ac_temp) && ch_temp1->value.float_value!=DeviceData.ac_temp ){
+    ch_temp1->value.float_value=DeviceData.ac_temp;
+    homekit_characteristic_notify(ch_temp1,ch_temp1->value);
+  }
+ }
+ if(temperature){
+  homekit_characteristic_t * ch_temp= homekit_service_characteristic_by_type(temperature, ("11"));
+  if(ch_temp && !isnan(DeviceData.sensor_temp) && ch_temp->value.float_value!=DeviceData.sensor_temp ){
+    ch_temp->value.float_value=DeviceData.sensor_temp;
     homekit_characteristic_notify(ch_temp,ch_temp->value);
   }
  }
+if(humidity){
+  homekit_characteristic_t * ch_hum= homekit_service_characteristic_by_type(humidity, ("10"));
+  if(ch_hum && !isnan(DeviceData.sensor_hum) && ch_hum->value.float_value!=DeviceData.sensor_hum){
+    ch_hum->value.float_value=DeviceData.sensor_hum;
+    homekit_characteristic_notify(ch_hum,ch_hum->value);
+  }
+}
 
 }
 void hap_update(homekit_characteristic_t *ch, homekit_value_t value, void *context) {
@@ -538,94 +528,74 @@ void hap_update(homekit_characteristic_t *ch, homekit_value_t value, void *conte
 
      homekit_characteristic_t* ch_target_temperature=homekit_service_characteristic_by_type(thermostat, ("35"));
      homekit_characteristic_t* ch_heating_threshold=homekit_service_characteristic_by_type(thermostat, ("12"));
-     homekit_characteristic_t* ch_cooling_threshold=homekit_service_characteristic_by_type(thermostat, ("D"));
+     homekit_characteristic_t* ch_cooling_threshold=homekit_service_characteristic_by_type(thermostat, ("D"));//制冷最低温度
 
+//DeviceData.ac_temp =  ch_target_temperature->value.float_value > DeviceData.sensor_temp ? DeviceData.sensor_temp : ch_target_temperature->value.float_value; //22.9.4 暂时不支持制暖
 
 if(!ch_temp || !ch_targetstate || !ch_target_temperature){
     Serial.println("characteristic wrong defined");
   return;
 }
 
+
+
 uint8_t state = ch_targetstate->value.int_value;
+
 if(state== 0 || state == 2)
 {
    Serial.printf("set AC to %d \n", state);
    AC_CRT_VAL = state;
 }
-else
-{
-    ch_targetstate->value.int_value = AC_CRT_VAL;
-    homekit_characteristic_notify(ch_targetstate,ch_targetstate->value);
-}
- DeviceData.temp = ch_target_temperature->value.float_value;
+
+
+   Serial.println(String("Temp")+String(ch_temp->value.float_value));
 
      if ((state == 1 && ch_temp->value.float_value < ch_target_temperature->value.float_value) ||
-            (state == 3 && ch_temp->value.float_value < ch_heating_threshold->value.float_value)) {
+            (state == 3 && ch_temp->value.float_value < ch_heating_threshold->value.float_value))
+    {
         if (ch_currentstate->value.int_value != 1) {
-            ch_currentstate->value = HOMEKIT_UINT8_VALUE(1);
+            ch_currentstate->value = HOMEKIT_UINT8_VALUE(1); //
             homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
-            //heaterOn();
-            //coolerOff();
-            //fanOff();
-            //fanOn(5000);
+            Serial.printf("HEAT     %d \n", ch_currentstate->value.int_value);
         }
-    } else if ((state == 2 && ch_temp->value.float_value > ch_target_temperature->value.float_value) ||
-            (state == 3 && ch_temp->value.float_value > ch_cooling_threshold->value.float_value)) {
+    }
+    else if ((state == 2 && ch_temp->value.float_value > ch_target_temperature->value.float_value) ||
+            (state == 3 && ch_temp->value.float_value > ch_cooling_threshold->value.float_value))
+    {
         if (ch_currentstate->value.int_value != 2) {
             ch_currentstate->value = HOMEKIT_UINT8_VALUE(2);
             homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
-
-            //coolerOn();
-            //heaterOff();
-            //fanOff();
-            //fanOn(5000);
+            Serial.printf("COOL     %d \n", ch_currentstate->value.int_value);
         }
-    } else {
-        if (ch_currentstate->value.int_value != 0) {
+    } else
+    {
+        if (ch_currentstate->value.int_value != 0)
+        {
             ch_currentstate->value = HOMEKIT_UINT8_VALUE(0);
             homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
-
-            //coolerOff();
-            //heaterOff();
-            //fanOff();
+            Serial.printf("OFF     %d \n", ch_currentstate->value.int_value);
         }
+
     }
+
 }
 
-void heaterOn() {
-   Serial.println("heaterOn");
-}
-
-
-void heaterOff() {
-     Serial.println("heaterOff");
-}
-
-
-void coolerOn() {
-    Serial.println("coolerOn");
-}
-
-
-void coolerOff() {
-    Serial.println("coolerOff");
-}
-
-
-void fan_alarm(void *arg) {
-     Serial.println("fan_alarm");
-}
-
-void fanOn(uint16_t delay) {
-Serial.println("fanOn");
-}
-
-
-void fanOff() {
-Serial.println("fanOff");
-}
 void readSensor(){
-# 579 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
-  Serial.println(String("Temp")+String(DeviceData.temp)+String("  Hum:")+String(DeviceData.hum));
-# 595 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+
+
+  DeviceData.sensor_temp= DHT.readTemperature();
+  DeviceData.sensor_hum = DHT.readHumidity();
+  DeviceData.ac_temp = DeviceData.sensor_temp ;
+  Serial.println(String("Temp")+String(DeviceData.sensor_temp)+String("  Hum:")+String(DeviceData.sensor_hum));
+  if(isnan(DeviceData.sensor_temp)){
+    Serial.println("Set default temp 20");
+    DeviceData.sensor_temp=26.0;
+  }
+    if(isnan(DeviceData.sensor_hum)){
+      Serial.println("Set default hum 50");
+     DeviceData.sensor_hum=50.0;
+  }
+# 610 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
+  Serial.println(String("Temp")+String(DeviceData.sensor_temp)+String("  Hum:")+String(DeviceData.sensor_hum));
+# 626 "d:\\DOCUMENT\\pro\\withing2.0\\arduino\\homeKit_AC\\EspHap_ThermostatControl.ino"
 }

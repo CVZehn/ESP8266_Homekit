@@ -192,8 +192,6 @@ d:\DOCUMENT\pro\withing2.0\arduino\homeKit_AC\build\sketch\EspHap_ThermostatCont
  C:\Users\24186\Documents\Arduino\libraries\IRremoteESP8266\src/locale/defaults.h \
  C:\Users\24186\Documents\Arduino\libraries\IRremoteESP8266\src/IRutils.h \
  C:\Users\24186\Documents\Arduino\libraries\DHT_sensor_library/DHT.h \
- C:\Users\24186\Documents\Arduino\libraries\DHT_sensor_library/DHT_U.h \
- C:\Users\24186\Documents\Arduino\libraries\Adafruit_Unified_Sensor/Adafruit_Sensor.h \
  C:\Users\24186\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WebServer\src/ESP8266WebServer.h \
  C:\Users\24186\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WebServer\src/detail/mimetable.h \
  C:\Users\24186\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WebServer\src/Uri.h \

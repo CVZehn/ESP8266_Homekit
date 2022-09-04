@@ -27,10 +27,10 @@ const char* password = "YYDS1024512";
 #include <IRsend.h>
 
 
-const uint16_t kIrLed = 5;
+const uint16_t kIrLed = 4;
 IRsend irsend(kIrLed);   
 
-#define IR_MODLE_PIN 14
+#define IR_MODLE_PIN 12
 
 #define IR_CODE_0 0
 #define IR_CODE_1 1
@@ -75,12 +75,13 @@ decode_results results;  // Somewhere to store the results
 
 
 #if USE_DHT11 
+  #define SENSOR_TYPE_DHT
   #include <DHT.h>
-  #include <DHT_U.h>
-  
-  #define DHTPIN 2     // Digital pin connected to the DHT sensor 
+
+  #define DHTPIN 5     // Digital pin connected to the DHT sensor 
   #define DHTTYPE    DHT11     // DHT 11
-  DHT_Unified dht(DHTPIN, DHT11);
+  DHT DHT(DHTPIN, DHT11);
+  
 #endif
 
 //Webserver
@@ -101,6 +102,9 @@ bool isWebserver_started=false;
 
 
 
+//float min_value_t = 0, min_step_t=1, max_value_t = 6;
+float *min_step_t = NULL;
+#define PAR_MODLE_PIN 14
 const int identity_led=2;
 
 #ifdef SEND_DATA_TO_THINGSPEAK
@@ -120,15 +124,18 @@ String pair_file_name="/pair.dat";
 
 homekit_service_t* thermostat=NULL;
 homekit_service_t* fan=NULL;
-
+homekit_service_t* temperature=NULL;
+homekit_service_t* humidity=NULL;  
+homekit_service_t* DHT_SENSOR=NULL;  
 
 
 #define SENSOR_READ_PERIOD_MS 5000
 #define SEND_THINGSPEAK_PERIOD_MS 500000
 
 struct device_data_t{
-  float temp=20.0;
-  float hum=50.0;
+  float ac_temp=26.0;
+  float sensor_temp=26.0;
+  float sensor_hum=50.0;
   float pressure=1000.0;
   unsigned long next_read_sensor_ms=0;
   unsigned long next_send_thingspeak_ms=0;
@@ -245,7 +252,8 @@ void setup() {
  #endif 
   Serial.begin(115200);
     delay(10);
-
+  
+    pinMode(PAR_MODLE_PIN, INPUT_PULLUP);
   #if USE_IR_CONTR
     pinMode(IR_MODLE_PIN, INPUT_PULLUP);
     irsend.begin();
@@ -294,8 +302,9 @@ void setup() {
     Serial.println(WiFi.localIP());
 
 #ifdef SENSOR_TYPE_DHT
-DHT.begin();
+  DHT.begin();
 #endif
+
 #ifdef SENSOR_TYPE_BME280
  if(!BME.begin(BME_ADDR))
    Serial.print("Failed to Init BME280: ");
@@ -323,30 +332,56 @@ DHT.begin();
     /// init base properties
     hap_initbase_accessory_service("ES","Yurik72","0","EspHapLed","1.0");
  
-    
-    // for base accessory registering temperature
+ 
     thermostat = hap_add_thermostat_service("Thermostat",hap_update,0);
     
+    // for base accessory registering temperature
+    //temperature = hap_add_temperature_service("Temperature");
+    
+    // Adding second accessory for humidity
+    temperature = hap_add_temp_as_accessory(homekit_accessory_category_sensor, "Temperature");
+    humidity = hap_add_hum_as_accessory(homekit_accessory_category_sensor, "Humidity");
+   
     fan = hap_add_fan_service("Fan",hap_update,0);
    
-   
-   
-hap_init_homekit_server();
-String strIp=String(WiFi.localIP()[0]) + String(".") + String(WiFi.localIP()[1]) + String(".") +  String(WiFi.localIP()[2]) + String(".") +  String(WiFi.localIP()[3]); 
+    //String strIp=String(WiFi.localIP()[0]) + String(".") + String(WiFi.localIP()[1]) + String(".") +  String(WiFi.localIP()[2]) + String(".") +  String(WiFi.localIP()[3]); 
+
+     homekit_characteristic_t * ch_targetstate= homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_TARGET_HEATING_COOLING_STATE);
+
+     homekit_characteristic_t*  ch_target_temperature=homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_TARGET_TEMPERATURE);
+     
+      
+      ch_targetstate->value.int_value = HOMEKIT_TARGET_HEATING_COOLING_STATE_COOL;
+      homekit_characteristic_notify(ch_targetstate, ch_targetstate->value);
+
+      ch_target_temperature->value.float_value = 26.0;
+      homekit_characteristic_notify(ch_target_temperature, ch_target_temperature->value);
+      
+      #if 0
+        homekit_characteristic_t*  fan_speed_step = homekit_service_characteristic_by_type(fan, HOMEKIT_CHARACTERISTIC_CURRENT_FAN_STATE);
+        //fan_speed_step->min_step = min_step_t;
+        //fan_speed_step->min_value = &min_value_t;
+        //fan_speed_step->max_value = &max_value_t;
+        *min_step_t = 20;
+         ch_target_temperature->max_value = min_step_t ;
+        Serial.printf("aaa %x\n",min_step_t[0]);      
+      #endif
+      
+  hap_init_homekit_server();
  //setup web server
 #ifdef ESP8266      
    if(hap_homekit_is_paired()){
 #endif
      delay(500);
       Serial.println("Setting web server");      
-      SETUP_FILEHANDLES
-      server.on("/get", handleGetVal);
-      server.on("/set", handleSetVal);   
-     server.begin(); 
-     Serial.println(String("Web site http://")+strIp);  
-     Serial.println(String("File system http://")+strIp+String("/browse")); 
-      Serial.println(String("Update http://")+strIp+String("/update"));     
-     isWebserver_started=true;
+      //SETUP_FILEHANDLES
+      //server.on("/get", handleGetVal);
+      //server.on("/set", handleSetVal);   
+     //server.begin(); 
+     //Serial.println(String("Web site http://")+strIp);  
+     //Serial.println(String("File system http://")+strIp+String("/browse")); 
+     //Serial.println(String("Update http://")+strIp+String("/update"));     
+     //isWebserver_started=true;
 #ifdef ESP8266     
   }else{
       Serial.println("Web server is NOT SET, waiting for pairing");
@@ -354,10 +389,14 @@ String strIp=String(WiFi.localIP()[0]) + String(".") + String(WiFi.localIP()[1])
 #endif   
 }
 void handleGetVal(){
+  
+  Serial.println("handleGetVal\n");  
   if(server.arg("var") == "temp")
-    server.send(200, FPSTR(TEXT_PLAIN),String(DeviceData.temp));
+    server.send(200, FPSTR(TEXT_PLAIN),String(DeviceData.sensor_temp));
   else if(server.arg("var") == "hum")
-     server.send(200, FPSTR(TEXT_PLAIN),String(DeviceData.hum));
+  {
+     server.send(200, FPSTR(TEXT_PLAIN),String(DeviceData.sensor_hum));
+  }
   else
     server.send(505, FPSTR(TEXT_PLAIN),"Bad args");  
      
@@ -371,8 +410,6 @@ void handleSetVal(){
   if(server.arg("var") == "ch1"){
   }
 
-
-     
 }
 void loop() {
  if(DeviceData.next_read_sensor_ms<=millis()){
@@ -414,8 +451,13 @@ if(DeviceData.next_send_thingspeak_ms<=millis()){
 }
 
 void init_hap_storage(){
-  Serial.print("init_hap_storage");
+  Serial.print("init_hap_storage \n");
  
+ if( digitalRead(PAR_MODLE_PIN) == 0)//不写入配对码  就重新开始配对
+ {
+   Serial.println("reset to  pairring");
+   return;
+ }
     
   File fsDAT=SPIFFS.open(pair_file_name, "r");
  if(!fsDAT){
@@ -433,10 +475,8 @@ void init_hap_storage(){
   delete []buf;
 
 }
-void storage_changed(char * szstorage,int bufsize){
-
-
-
+void storage_changed(char * szstorage,int bufsize) //回调函数 ，会传配对码给homekit 服务
+{ 
   SPIFFS.remove(pair_file_name);
   File fsDAT=SPIFFS.open(pair_file_name, "w+");
   if(!fsDAT){
@@ -451,12 +491,26 @@ void storage_changed(char * szstorage,int bufsize){
 void notify_hap(){
 
  if(thermostat){
-  homekit_characteristic_t * ch_temp= homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_CURRENT_TEMPERATURE);
-  if(ch_temp && !isnan(DeviceData.temp) &&  ch_temp->value.float_value!=DeviceData.temp ){
-    ch_temp->value.float_value=DeviceData.temp;
+  homekit_characteristic_t * ch_temp1= homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_CURRENT_TEMPERATURE);
+  if(ch_temp1 && !isnan(DeviceData.ac_temp) &&  ch_temp1->value.float_value!=DeviceData.ac_temp ){
+    ch_temp1->value.float_value=DeviceData.ac_temp;
+    homekit_characteristic_notify(ch_temp1,ch_temp1->value);
+  }
+ }
+ if(temperature){
+  homekit_characteristic_t * ch_temp= homekit_service_characteristic_by_type(temperature, HOMEKIT_CHARACTERISTIC_CURRENT_TEMPERATURE);
+  if(ch_temp && !isnan(DeviceData.sensor_temp) &&  ch_temp->value.float_value!=DeviceData.sensor_temp ){
+    ch_temp->value.float_value=DeviceData.sensor_temp;
     homekit_characteristic_notify(ch_temp,ch_temp->value);
   }
  }
+if(humidity){
+  homekit_characteristic_t * ch_hum= homekit_service_characteristic_by_type(humidity, HOMEKIT_CHARACTERISTIC_CURRENT_RELATIVE_HUMIDITY);
+  if(ch_hum && !isnan(DeviceData.sensor_hum) && ch_hum->value.float_value!=DeviceData.sensor_hum){
+    ch_hum->value.float_value=DeviceData.sensor_hum;
+    homekit_characteristic_notify(ch_hum,ch_hum->value);
+  }
+}
 
 }
 void hap_update(homekit_characteristic_t *ch, homekit_value_t value, void *context) {
@@ -471,98 +525,75 @@ void hap_update(homekit_characteristic_t *ch, homekit_value_t value, void *conte
      homekit_characteristic_t * ch_currentstate= homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_CURRENT_HEATING_COOLING_STATE);
 
      homekit_characteristic_t*  ch_target_temperature=homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_TARGET_TEMPERATURE);
-     homekit_characteristic_t* ch_heating_threshold=homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_HEATING_THRESHOLD_TEMPERATURE);
-     homekit_characteristic_t* ch_cooling_threshold=homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_COOLING_THRESHOLD_TEMPERATURE);
-
+     homekit_characteristic_t*  ch_heating_threshold=homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_HEATING_THRESHOLD_TEMPERATURE); 
+     homekit_characteristic_t*  ch_cooling_threshold=homekit_service_characteristic_by_type(thermostat, HOMEKIT_CHARACTERISTIC_COOLING_THRESHOLD_TEMPERATURE);//制冷最低温度
      
+//DeviceData.ac_temp =  ch_target_temperature->value.float_value > DeviceData.sensor_temp ? DeviceData.sensor_temp : ch_target_temperature->value.float_value; //22.9.4 暂时不支持制暖
+
 if(!ch_temp || !ch_targetstate || !ch_target_temperature){
     Serial.println("characteristic wrong defined");
   return;
 }
 
+
+
 uint8_t state = ch_targetstate->value.int_value;
+
 if(state== HOMEKIT_TARGET_HEATING_COOLING_STATE_OFF || state  == HOMEKIT_TARGET_HEATING_COOLING_STATE_COOL)
 {
    Serial.printf("set AC to %d \n", state);
    AC_CRT_VAL = state;
 }
-else
-{
-    ch_targetstate->value.int_value = AC_CRT_VAL;
-    homekit_characteristic_notify(ch_targetstate,ch_targetstate->value);
-}
- DeviceData.temp = ch_target_temperature->value.float_value;
- 
-     if ((state == 1 && ch_temp->value.float_value < ch_target_temperature->value.float_value) ||
-            (state == 3 && ch_temp->value.float_value < ch_heating_threshold->value.float_value)) {
-        if (ch_currentstate->value.int_value != 1) {
-            ch_currentstate->value = HOMEKIT_UINT8_VALUE(1);
-            homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
-            //heaterOn();
-            //coolerOff();
-            //fanOff();
-            //fanOn(5000);
-        }
-    } else if ((state == 2 && ch_temp->value.float_value > ch_target_temperature->value.float_value) ||
-            (state == 3 && ch_temp->value.float_value > ch_cooling_threshold->value.float_value)) {
-        if (ch_currentstate->value.int_value != 2) {
-            ch_currentstate->value = HOMEKIT_UINT8_VALUE(2);
-            homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
 
-            //coolerOn();
-            //heaterOff();
-            //fanOff();
-            //fanOn(5000);
-        }
-    } else {
-        if (ch_currentstate->value.int_value != 0) {
-            ch_currentstate->value = HOMEKIT_UINT8_VALUE(0);
-            homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
+    
+   Serial.println(String("Temp")+String(ch_temp->value.float_value));
 
-            //coolerOff();
-            //heaterOff();
-            //fanOff();
+     if ((state == HOMEKIT_TARGET_HEATING_COOLING_STATE_HEAT && ch_temp->value.float_value < ch_target_temperature->value.float_value) ||
+            (state == HOMEKIT_TARGET_HEATING_COOLING_STATE_AUTO && ch_temp->value.float_value < ch_heating_threshold->value.float_value)) 
+    {
+        if (ch_currentstate->value.int_value != HOMEKIT_TARGET_HEATING_COOLING_STATE_HEAT) {
+            ch_currentstate->value = HOMEKIT_UINT8_VALUE(HOMEKIT_TARGET_HEATING_COOLING_STATE_HEAT); //
+            homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
+            Serial.printf("HEAT     %d \n", ch_currentstate->value.int_value);
         }
+    } 
+    else if ((state == HOMEKIT_TARGET_HEATING_COOLING_STATE_COOL && ch_temp->value.float_value > ch_target_temperature->value.float_value) ||
+            (state == HOMEKIT_TARGET_HEATING_COOLING_STATE_AUTO && ch_temp->value.float_value > ch_cooling_threshold->value.float_value)) 
+    {
+        if (ch_currentstate->value.int_value != HOMEKIT_TARGET_HEATING_COOLING_STATE_COOL) {
+            ch_currentstate->value = HOMEKIT_UINT8_VALUE(HOMEKIT_TARGET_HEATING_COOLING_STATE_COOL);
+            homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
+            Serial.printf("COOL     %d \n", ch_currentstate->value.int_value);
+        }
+    } else 
+    {
+        if (ch_currentstate->value.int_value != HOMEKIT_TARGET_HEATING_COOLING_STATE_OFF) 
+        {
+            ch_currentstate->value = HOMEKIT_UINT8_VALUE(HOMEKIT_TARGET_HEATING_COOLING_STATE_OFF);
+            homekit_characteristic_notify(ch_currentstate, ch_currentstate->value);
+            Serial.printf("OFF     %d \n", ch_currentstate->value.int_value);
+        }
+
     }
+     
 }
 
-void heaterOn() {
-   Serial.println("heaterOn");
-}
-
-
-void heaterOff() {
-     Serial.println("heaterOff");
-}
-
-
-void coolerOn() {
-    Serial.println("coolerOn");
-}
-
-
-void coolerOff() {
-    Serial.println("coolerOff");
-}
-
-
-void fan_alarm(void *arg) {
-     Serial.println("fan_alarm");
-}
-
-void fanOn(uint16_t delay) {
-Serial.println("fanOn");
-}
-
-
-void fanOff() {
-Serial.println("fanOff");
-}
 void readSensor(){
 
 #ifdef SENSOR_TYPE_DHT
-  DeviceData.temp= DHT.readTemperature();
-  DeviceData.hum = DHT.readHumidity();
+  DeviceData.sensor_temp= DHT.readTemperature();
+  DeviceData.sensor_hum = DHT.readHumidity();
+  DeviceData.ac_temp = DeviceData.sensor_temp ; 
+  Serial.println(String("Temp")+String(DeviceData.sensor_temp)+String("  Hum:")+String(DeviceData.sensor_hum));
+  if(isnan(DeviceData.sensor_temp)){
+    Serial.println("Set default temp 20");
+    DeviceData.sensor_temp=26.0;
+  }
+    if(isnan(DeviceData.sensor_hum)){
+      Serial.println("Set default hum 50");
+     DeviceData.sensor_hum=50.0;
+  }
+  
 #endif
 #ifdef  SENSOR_TYPE_BME280
  DeviceData.temp=BME.readTemperature();
@@ -576,7 +607,7 @@ DALLAS.requestTemperatures(); // Send the command to get temperatures
   // We use the function ByIndex, and as an example get the temperature from the first sensor only.
   DeviceData.temp = DALLAS.getTempCByIndex(0);
 #endif
-  Serial.println(String("Temp")+String(DeviceData.temp)+String("  Hum:")+String(DeviceData.hum));
+  Serial.println(String("Temp")+String(DeviceData.sensor_temp)+String("  Hum:")+String(DeviceData.sensor_hum));
   #if 0
   if(isnan(DeviceData.temp)){
     Serial.println("Set default temp 20");
