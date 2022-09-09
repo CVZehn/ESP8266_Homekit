@@ -27,10 +27,10 @@ const char* password = "YYDS1024512";
 #include <IRsend.h>
 
 
-const uint16_t kIrLed = 4;
+const uint16_t kIrLed = 5;
 IRsend irsend(kIrLed);   
 
-#define IR_MODLE_PIN 12
+#define IR_MODLE_PIN 13
 
 #define IR_CODE_0 0
 #define IR_CODE_1 1
@@ -78,7 +78,7 @@ decode_results results;  // Somewhere to store the results
   #define SENSOR_TYPE_DHT
   #include <DHT.h>
 
-  #define DHTPIN 5     // Digital pin connected to the DHT sensor 
+  #define DHTPIN 12     // Digital pin connected to the DHT sensor 
   #define DHTTYPE    DHT11     // DHT 11
   DHT DHT(DHTPIN, DHT11);
   
