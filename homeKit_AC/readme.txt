@@ -1,3 +1,4 @@
+该工程不需要homeassitan
 1、打开命令面板P
 2、输入 arduino library
     选择 Arduino Library Manage
